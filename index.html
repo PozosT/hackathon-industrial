@@ -795,15 +795,15 @@
       <form id="ask-form">
         <div class="form-group">
           <label>Nombre completo</label>
-          <input type="text" placeholder="Tu nombre" required />
+          <input type="text" name="nombre" placeholder="Tu nombre" required />
         </div>
         <div class="form-group">
           <label>Correo electrónico</label>
-          <input type="email" placeholder="tu@uniandes.edu.co" required />
+          <input type="email" name="email" placeholder="tu@uniandes.edu.co" required />
         </div>
         <div class="form-group">
           <label>Categoría</label>
-          <select>
+          <select name="categoria">
             <option value="">Selecciona una categoría</option>
             <option>Inscripción y equipos</option>
             <option>Logística y lugar</option>
@@ -815,7 +815,7 @@
         </div>
         <div class="form-group">
           <label>Tu pregunta</label>
-          <textarea placeholder="Escribe tu pregunta aquí..."></textarea>
+          <textarea name="pregunta" placeholder="Escribe tu pregunta aquí..."></textarea>
         </div>
         <button type="submit" class="btn-form">Enviar pregunta →</button>
       </form>
@@ -884,11 +884,25 @@
     });
   });
 
-  // Form
-  document.getElementById('ask-form').addEventListener('submit', function(e) {
+  // Form → Formspree
+  document.getElementById('ask-form').addEventListener('submit', async function(e) {
     e.preventDefault();
-    this.style.display = 'none';
-    document.getElementById('form-success').style.display = 'block';
+    const btn = this.querySelector('button[type="submit"]');
+    btn.textContent = 'Enviando...'; btn.disabled = true;
+    const data = new FormData(this);
+    try {
+      const res = await fetch('https://formspree.io/m.urango@uniandes.edu.co', {
+        method: 'POST', body: data, headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        this.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        btn.textContent = 'Error al enviar. Intenta de nuevo.'; btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Error al enviar. Intenta de nuevo.'; btn.disabled = false;
+    }
   });
 
   // Scroll reveal
