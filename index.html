@@ -3,30 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HackInd 2026 · Departamento de Ingeniería Industrial · Uniandes</title>
+  <title>Hackathon · From Data to Decision · Ingeniería Industrial Uniandes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --uniandes: #C8102E;
-      --uniandes-dark: #9b0c22;
-      --gold: #F2A900;
-      --gold-dark: #c98b00;
-      --dark: #0d0d0d;
-      --dark2: #141414;
-      --surface: #1a1a1a;
-      --surface2: #222222;
-      --border: rgba(255,255,255,0.08);
-      --text: #f0f0f0;
-      --muted: #888;
-      --radius: 16px;
+      --teal:       #00c9b8;
+      --teal-dark:  #009e8f;
+      --teal-glow:  rgba(0,201,184,0.35);
+      --yellow:     #FFD600;
+      --yellow-dark:#c9a800;
+      --dark:       #070b18;
+      --dark2:      #0c1020;
+      --surface:    #111827;
+      --surface2:   #1a2236;
+      --border:     rgba(0,201,184,0.14);
+      --border2:    rgba(255,255,255,0.07);
+      --text:       #eef2ff;
+      --muted:      #7a8aab;
+      --radius:     16px;
     }
 
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Inter', sans-serif;
       background: var(--dark);
@@ -39,178 +40,195 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 40px;
-      background: rgba(13,13,13,0.85);
+      padding: 16px 40px;
+      background: rgba(7,11,24,0.88);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
-    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-logo-badge {
-      background: var(--uniandes);
-      color: #fff; font-weight: 800; font-size: 13px;
-      padding: 4px 10px; border-radius: 6px; letter-spacing: 0.5px;
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .nav-logo img { height: 36px; object-fit: contain; filter: brightness(1.1); }
+    .nav-logo-text {
+      color: var(--text); font-weight: 700; font-size: 14px;
+      line-height: 1.3;
     }
-    .nav-logo-text { color: var(--text); font-weight: 600; font-size: 15px; }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-logo-text span { color: var(--teal); display: block; font-size: 11px; font-weight: 500; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
     .nav-links a {
       color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500;
       transition: color .2s;
     }
     .nav-links a:hover { color: var(--text); }
     .nav-cta {
-      background: var(--uniandes); color: #fff;
+      background: var(--yellow); color: #070b18;
       padding: 10px 22px; border-radius: 10px;
-      font-weight: 700; font-size: 14px; text-decoration: none;
+      font-weight: 800; font-size: 14px; text-decoration: none;
       transition: background .2s, transform .1s;
     }
-    .nav-cta:hover { background: var(--uniandes-dark); transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--yellow-dark); transform: translateY(-1px); }
 
     /* ── HERO ── */
     #hero {
       min-height: 100vh;
+      position: relative;
       display: flex; align-items: center; justify-content: center;
       padding: 120px 40px 80px;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200,16,46,0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(242,169,0,0.10) 0%, transparent 60%),
-        var(--dark);
-      text-align: center;
-      position: relative;
       overflow: hidden;
     }
-    .hero-grid-bg {
-      position: absolute; inset: 0; pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-      background-size: 60px 60px;
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('Imagenes/Hackaton%204%20-%20Banner.png');
+      background-size: cover; background-position: center top;
+      filter: brightness(0.35);
     }
-    .hero-content { position: relative; max-width: 820px; }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(7,11,24,0.1) 0%,
+        rgba(7,11,24,0.05) 40%,
+        rgba(7,11,24,0.85) 85%,
+        rgba(7,11,24,1) 100%
+      );
+    }
+    .hero-content { position: relative; text-align: center; max-width: 860px; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(200,16,46,0.15); border: 1px solid rgba(200,16,46,0.3);
-      color: #ff6b7a; padding: 8px 18px; border-radius: 100px;
-      font-size: 13px; font-weight: 600; letter-spacing: 0.5px;
+      background: rgba(0,201,184,0.1); border: 1px solid rgba(0,201,184,0.3);
+      color: var(--teal); padding: 8px 18px; border-radius: 100px;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
       margin-bottom: 28px;
     }
     .hero-badge-dot {
-      width: 8px; height: 8px; border-radius: 50%; background: #ff6b7a;
+      width: 8px; height: 8px; border-radius: 50%; background: var(--teal);
       animation: pulse 2s infinite;
     }
     @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: .4; transform: scale(.8); }
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.3; transform:scale(.7); }
+    }
+    .hero-eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(13px, 2vw, 16px); font-weight: 600;
+      color: var(--muted); letter-spacing: 3px; text-transform: uppercase;
+      margin-bottom: 16px;
     }
     .hero-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(48px, 8vw, 96px);
-      font-weight: 700; line-height: 1;
-      letter-spacing: -2px;
-      margin-bottom: 12px;
+      font-size: clamp(52px, 9vw, 108px);
+      font-weight: 800; line-height: .95;
+      letter-spacing: -3px;
+      margin-bottom: 14px;
     }
-    .hero-title span { color: var(--uniandes); }
+    .hero-title span { color: var(--teal); }
     .hero-subtitle {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(20px, 3vw, 32px);
-      font-weight: 500; color: var(--gold);
-      margin-bottom: 24px; letter-spacing: -0.5px;
+      font-size: clamp(16px, 2.5vw, 24px);
+      font-weight: 600; color: var(--yellow);
+      letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 32px;
     }
     .hero-desc {
-      font-size: 17px; color: var(--muted); max-width: 560px; margin: 0 auto 44px;
-      line-height: 1.75;
+      font-size: 17px; color: var(--muted);
+      max-width: 520px; margin: 0 auto 48px; line-height: 1.8;
     }
     .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
     .btn-primary {
-      background: var(--uniandes);
-      color: #fff; padding: 16px 36px;
-      border-radius: 12px; font-weight: 700; font-size: 16px;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
-      transition: all .2s; box-shadow: 0 0 40px rgba(200,16,46,0.35);
+      background: var(--yellow); color: #070b18;
+      padding: 16px 36px; border-radius: 12px;
+      font-weight: 800; font-size: 16px; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px;
+      transition: all .2s;
+      box-shadow: 0 0 40px rgba(255,214,0,0.3);
     }
-    .btn-primary:hover { background: var(--uniandes-dark); transform: translateY(-2px); box-shadow: 0 6px 50px rgba(200,16,46,0.5); }
+    .btn-primary:hover { background: var(--yellow-dark); transform: translateY(-2px); box-shadow: 0 6px 50px rgba(255,214,0,0.45); }
     .btn-secondary {
       background: transparent; color: var(--text);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border2);
       padding: 16px 36px; border-radius: 12px;
       font-weight: 600; font-size: 16px; text-decoration: none;
       transition: all .2s;
     }
-    .btn-secondary:hover { border-color: rgba(255,255,255,0.3); background: var(--surface); }
+    .btn-secondary:hover { border-color: var(--teal); color: var(--teal); }
+
+    .countdown-wrapper {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      margin-top: 48px;
+    }
+    .countdown-box {
+      background: rgba(7,11,24,0.7); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 24px; text-align: center; min-width: 88px;
+      backdrop-filter: blur(10px);
+    }
+    .countdown-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 38px; font-weight: 800; color: var(--teal); display: block;
+    }
+    .countdown-lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; }
 
     .hero-stats {
       display: flex; gap: 48px; justify-content: center;
-      margin-top: 72px; padding-top: 48px;
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap;
+      margin-top: 64px; padding-top: 48px;
+      border-top: 1px solid var(--border2); flex-wrap: wrap;
     }
     .stat { text-align: center; }
     .stat-value {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 36px; font-weight: 700; color: var(--text);
+      font-size: 34px; font-weight: 800; color: var(--text);
     }
-    .stat-value span { color: var(--uniandes); }
+    .stat-value span { color: var(--teal); }
     .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
-
-    /* countdown */
-    .countdown-wrapper {
-      margin-top: 40px;
-      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-    }
-    .countdown-box {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 12px; padding: 16px 24px; text-align: center; min-width: 88px;
-    }
-    .countdown-num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 36px; font-weight: 700; color: var(--gold);
-      display: block;
-    }
-    .countdown-lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
 
     /* ── SECTIONS ── */
     section { padding: 100px 40px; }
     .container { max-width: 1100px; margin: 0 auto; }
     .section-tag {
       font-size: 12px; font-weight: 700; letter-spacing: 2px;
-      text-transform: uppercase; color: var(--uniandes);
-      margin-bottom: 12px;
+      text-transform: uppercase; color: var(--teal); margin-bottom: 12px;
     }
     .section-title {
       font-family: 'Space Grotesk', sans-serif;
       font-size: clamp(28px, 4vw, 44px);
-      font-weight: 700; letter-spacing: -1px;
-      margin-bottom: 16px;
+      font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;
     }
-    .section-desc { color: var(--muted); font-size: 17px; max-width: 580px; line-height: 1.75; }
+    .section-desc { color: var(--muted); font-size: 17px; max-width: 580px; line-height: 1.8; }
 
-    /* ── ABOUT / CARDS ── */
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center; margin-top: 64px;
+    }
+    .about-img {
+      border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 0 60px rgba(0,201,184,0.12);
+    }
+    .about-img img { width: 100%; display: block; }
     .cards-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px; margin-top: 56px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin-top: 32px;
     }
     .card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 32px;
+      background: var(--surface); border: 1px solid var(--border2);
+      border-radius: var(--radius); padding: 24px;
       transition: border-color .2s, transform .2s;
     }
-    .card:hover { border-color: rgba(200,16,46,0.4); transform: translateY(-4px); }
+    .card:hover { border-color: var(--teal); transform: translateY(-3px); }
     .card-icon {
-      width: 48px; height: 48px; border-radius: 12px;
-      background: rgba(200,16,46,0.12); border: 1px solid rgba(200,16,46,0.2);
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(0,201,184,0.1); border: 1px solid rgba(0,201,184,0.2);
       display: flex; align-items: center; justify-content: center;
-      font-size: 22px; margin-bottom: 20px;
+      font-size: 20px; margin-bottom: 16px;
     }
-    .card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-    .card p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 13px; line-height: 1.7; }
 
-    /* ── PHASES / TIMELINE ── */
+    /* ── PHASES ── */
     #phases { background: var(--dark2); }
-    .timeline { margin-top: 56px; display: flex; flex-direction: column; gap: 0; }
+    .timeline { margin-top: 56px; display: flex; flex-direction: column; }
     .phase {
-      display: grid; grid-template-columns: 200px 1fr;
+      display: grid; grid-template-columns: 180px 1fr;
       gap: 32px; align-items: start;
-      padding: 40px 0;
-      border-bottom: 1px solid var(--border);
+      padding: 36px 0; border-bottom: 1px solid var(--border2);
       position: relative;
     }
     .phase:last-child { border-bottom: none; }
@@ -221,17 +239,15 @@
     }
     .phase-time::after {
       content: ''; position: absolute;
-      right: -7px; top: 6px;
+      right: -7px; top: 8px;
       width: 12px; height: 12px; border-radius: 50%;
-      background: var(--uniandes);
-      border: 2px solid var(--dark2);
+      background: var(--teal); border: 2px solid var(--dark2);
+      box-shadow: 0 0 12px var(--teal-glow);
     }
-    .phase-time-label {
-      font-size: 13px; color: var(--muted); display: block; margin-bottom: 4px;
-    }
+    .phase-time-label { font-size: 11px; color: var(--muted); display: block; margin-bottom: 4px; letter-spacing: 1px; text-transform: uppercase; }
     .phase-time-value {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 20px; font-weight: 700; color: var(--gold);
+      font-size: 20px; font-weight: 700; color: var(--yellow);
     }
     .phase-body { padding-left: 8px; }
     .phase-tag {
@@ -239,195 +255,186 @@
       font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
       padding: 4px 10px; border-radius: 6px; margin-bottom: 12px;
     }
-    .tag-red { background: rgba(200,16,46,.15); color: #ff8096; }
-    .tag-gold { background: rgba(242,169,0,.15); color: #f2c94c; }
-    .tag-blue { background: rgba(59,130,246,.15); color: #93c5fd; }
-    .tag-green { background: rgba(34,197,94,.15); color: #86efac; }
-    .phase-body h3 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
-    .phase-body p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+    .tag-teal  { background: rgba(0,201,184,.12); color: #00d9c7; }
+    .tag-yellow{ background: rgba(255,214,0,.12);  color: #ffe033; }
+    .tag-blue  { background: rgba(99,179,237,.12); color: #90cdf4; }
+    .tag-green { background: rgba(72,187,120,.12); color: #9ae6b4; }
+    .phase-body h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .phase-body p  { color: var(--muted); font-size: 15px; line-height: 1.7; }
 
     /* ── PRIZES ── */
     .prizes-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
       gap: 24px; margin-top: 56px;
     }
     .prize-card {
-      background: var(--surface); border: 1px solid var(--border);
+      background: var(--surface); border: 1px solid var(--border2);
       border-radius: var(--radius); padding: 36px 28px;
       text-align: center; position: relative; overflow: hidden;
       transition: transform .2s;
     }
     .prize-card:hover { transform: translateY(-6px); }
-    .prize-card.gold-card { border-color: rgba(242,169,0,.4); }
-    .prize-card.gold-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--gold), #ffe066);
-    }
-    .prize-card.silver-card { border-color: rgba(180,180,200,.3); }
-    .prize-card.silver-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, #b4b4c8, #e0e0f0);
-    }
-    .prize-card.bronze-card { border-color: rgba(205,127,50,.3); }
-    .prize-card.bronze-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, #cd7f32, #f5b97a);
-    }
-    .prize-medal { font-size: 56px; margin-bottom: 16px; }
-    .prize-place {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 14px; font-weight: 700; letter-spacing: 2px;
-      text-transform: uppercase; color: var(--muted); margin-bottom: 12px;
-    }
+    .prize-card.gold-card   { border-color: rgba(255,214,0,.35); }
+    .prize-card.gold-card::before   { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg,#FFD600,#ffe566); }
+    .prize-card.silver-card { border-color: rgba(180,200,220,.3); }
+    .prize-card.silver-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg,#b4c8dc,#dceeff); }
+    .prize-card.bronze-card { border-color: rgba(0,201,184,.3); }
+    .prize-card.bronze-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg,var(--teal),#7eeee8); }
+    .prize-medal { font-size: 52px; margin-bottom: 16px; }
+    .prize-place { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
     .prize-title { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
-    .prize-desc { color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .prize-desc  { color: var(--muted); font-size: 14px; line-height: 1.7; }
 
     /* ── LOCATION ── */
     #location { background: var(--dark2); }
     .location-grid {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 48px; align-items: center; margin-top: 56px;
+      gap: 64px; align-items: center; margin-top: 56px;
     }
     .location-info { display: flex; flex-direction: column; gap: 20px; }
-    .location-item {
-      display: flex; gap: 16px; align-items: flex-start;
-    }
+    .location-item { display: flex; gap: 16px; align-items: flex-start; }
     .location-icon {
       width: 44px; height: 44px; border-radius: 10px;
-      background: rgba(200,16,46,0.12); border: 1px solid rgba(200,16,46,0.2);
+      background: rgba(0,201,184,0.1); border: 1px solid rgba(0,201,184,0.2);
       display: flex; align-items: center; justify-content: center;
       font-size: 18px; flex-shrink: 0;
     }
-    .location-item h4 { font-size: 14px; color: var(--muted); margin-bottom: 4px; }
-    .location-item p { font-size: 16px; font-weight: 600; }
-    .location-map {
-      background: var(--surface); border: 1px solid var(--border);
+    .location-item h4 { font-size: 12px; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; }
+    .location-item p  { font-size: 16px; font-weight: 600; }
+    .location-img {
       border-radius: var(--radius); overflow: hidden;
-      aspect-ratio: 4/3;
-      display: flex; align-items: center; justify-content: center;
-      position: relative;
+      border: 1px solid var(--border);
+      box-shadow: 0 0 60px rgba(0,201,184,0.1);
     }
-    .map-placeholder {
-      width: 100%; height: 100%;
-      background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 12px; color: var(--muted);
-    }
-    .map-pin { font-size: 48px; }
-    .map-label { font-size: 14px; font-weight: 600; }
+    .location-img img { width: 100%; display: block; }
 
     /* ── FAQ ── */
-    .faq-list { margin-top: 56px; display: flex; flex-direction: column; gap: 12px; }
+    .faq-list { margin-top: 56px; display: flex; flex-direction: column; gap: 10px; }
     .faq-item {
-      background: var(--surface); border: 1px solid var(--border);
+      background: var(--surface); border: 1px solid var(--border2);
       border-radius: var(--radius); overflow: hidden;
+      transition: border-color .2s;
     }
+    .faq-item.open { border-color: var(--teal); }
     .faq-q {
       width: 100%; background: none; border: none; color: var(--text);
-      padding: 24px 28px; font-size: 16px; font-weight: 600;
+      padding: 22px 28px; font-size: 16px; font-weight: 600; font-family: 'Inter',sans-serif;
       text-align: left; cursor: pointer;
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 16px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
       transition: background .15s;
     }
-    .faq-q:hover { background: rgba(255,255,255,.03); }
-    .faq-chevron { font-size: 18px; color: var(--muted); transition: transform .2s; flex-shrink: 0; }
+    .faq-q:hover { background: rgba(0,201,184,0.04); }
+    .faq-chevron { font-size: 18px; color: var(--teal); transition: transform .25s; flex-shrink: 0; }
     .faq-item.open .faq-chevron { transform: rotate(180deg); }
     .faq-a {
       padding: 0 28px; max-height: 0; overflow: hidden;
-      color: var(--muted); font-size: 15px; line-height: 1.75;
+      color: var(--muted); font-size: 15px; line-height: 1.8;
       transition: max-height .3s ease, padding .3s ease;
     }
-    .faq-item.open .faq-a { max-height: 300px; padding: 0 28px 24px; }
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 28px 22px; }
 
     /* ── ASK FORM ── */
-    #ask { background: var(--dark2); }
+    #ask { background: var(--dark); }
     .ask-form-wrap {
       max-width: 640px; margin: 56px auto 0;
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 44px;
     }
     .form-group { margin-bottom: 20px; }
-    label { display: block; font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 8px; letter-spacing: .5px; }
+    label { display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 8px; letter-spacing: 1px; text-transform: uppercase; }
     input, textarea, select {
-      width: 100%; background: var(--dark2); border: 1px solid var(--border);
+      width: 100%; background: var(--dark2); border: 1px solid var(--border2);
       border-radius: 10px; padding: 14px 16px;
       color: var(--text); font-size: 15px; font-family: 'Inter', sans-serif;
-      transition: border-color .2s;
-      outline: none;
+      transition: border-color .2s; outline: none;
     }
-    input:focus, textarea:focus, select:focus { border-color: var(--uniandes); }
+    input:focus, textarea:focus, select:focus { border-color: var(--teal); }
     textarea { resize: vertical; min-height: 120px; }
     select option { background: var(--dark2); }
     .btn-form {
-      width: 100%; background: var(--uniandes); color: #fff;
+      width: 100%; background: var(--teal); color: #070b18;
       border: none; border-radius: 10px; padding: 16px;
-      font-size: 16px; font-weight: 700; cursor: pointer;
+      font-size: 16px; font-weight: 800; cursor: pointer; font-family: 'Inter',sans-serif;
       transition: background .2s, transform .1s;
     }
-    .btn-form:hover { background: var(--uniandes-dark); transform: translateY(-1px); }
+    .btn-form:hover { background: var(--teal-dark); transform: translateY(-1px); }
     .form-success {
       display: none; text-align: center; padding: 32px;
-      color: #86efac; font-size: 16px; font-weight: 600;
+      color: var(--teal); font-size: 16px; font-weight: 600;
     }
     .form-success .success-icon { font-size: 48px; margin-bottom: 12px; }
 
     /* ── REGISTER BANNER ── */
     #register {
-      background:
-        radial-gradient(ellipse 80% 80% at 50% 50%, rgba(200,16,46,0.15) 0%, transparent 70%),
-        var(--dark);
+      position: relative; overflow: hidden;
       text-align: center; padding: 120px 40px;
     }
+    .register-bg {
+      position: absolute; inset: 0;
+      background-image: url('Imagenes/Hackaton%201%20-%20Post%20cuadrado.png');
+      background-size: cover; background-position: center;
+      filter: brightness(0.2);
+    }
+    .register-overlay {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(0,201,184,0.08) 0%, rgba(7,11,24,0.9) 70%);
+    }
+    .register-content { position: relative; }
     .register-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(32px, 5vw, 60px); font-weight: 700;
+      font-size: clamp(32px, 5vw, 60px); font-weight: 800;
       letter-spacing: -1.5px; margin-bottom: 20px;
     }
-    .register-desc { color: var(--muted); font-size: 18px; margin-bottom: 48px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .register-desc {
+      color: var(--muted); font-size: 18px; margin-bottom: 48px;
+      max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7;
+    }
     .btn-register {
       display: inline-flex; align-items: center; gap: 12px;
-      background: var(--uniandes); color: #fff;
-      padding: 20px 48px; border-radius: 16px;
+      background: var(--yellow); color: #070b18;
+      padding: 20px 52px; border-radius: 16px;
       font-weight: 800; font-size: 20px; text-decoration: none;
-      box-shadow: 0 0 60px rgba(200,16,46,0.5), 0 20px 60px rgba(200,16,46,0.3);
+      box-shadow: 0 0 60px rgba(255,214,0,0.4), 0 20px 60px rgba(255,214,0,0.2);
       transition: all .2s; animation: glow 3s ease-in-out infinite;
     }
     @keyframes glow {
-      0%, 100% { box-shadow: 0 0 60px rgba(200,16,46,0.5), 0 20px 60px rgba(200,16,46,0.3); }
-      50% { box-shadow: 0 0 80px rgba(200,16,46,0.7), 0 20px 80px rgba(200,16,46,0.5); }
+      0%,100% { box-shadow: 0 0 60px rgba(255,214,0,0.4), 0 20px 60px rgba(255,214,0,0.2); }
+      50%      { box-shadow: 0 0 80px rgba(255,214,0,0.6), 0 20px 80px rgba(255,214,0,0.4); }
     }
-    .btn-register:hover { background: var(--uniandes-dark); transform: scale(1.03); }
-    .register-note { color: var(--muted); font-size: 14px; margin-top: 24px; }
+    .btn-register:hover { background: var(--yellow-dark); transform: scale(1.03); }
+    .register-note { color: var(--muted); font-size: 14px; margin-top: 28px; position: relative; }
 
     /* ── FOOTER ── */
     footer {
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--border2);
+      background: var(--dark2);
       padding: 48px 40px;
       display: flex; align-items: center; justify-content: space-between;
       gap: 24px; flex-wrap: wrap;
     }
-    .footer-logo { display: flex; align-items: center; gap: 12px; }
     .footer-copy { color: var(--muted); font-size: 14px; }
     .footer-links { display: flex; gap: 24px; }
     .footer-links a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color .2s; }
-    .footer-links a:hover { color: var(--text); }
+    .footer-links a:hover { color: var(--teal); }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid, .location-grid { grid-template-columns: 1fr; }
+      .cards-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 768px) {
-      nav { padding: 16px 20px; }
+      nav { padding: 14px 20px; }
       .nav-links { display: none; }
       section { padding: 72px 20px; }
-      .location-grid { grid-template-columns: 1fr; }
       .phase { grid-template-columns: 1fr; }
-      .phase-time { text-align: left; border-right: none; border-bottom: 1px solid var(--border); padding-right: 0; padding-bottom: 16px; margin-bottom: 8px; }
+      .phase-time { text-align: left; border-right: none; border-bottom: 1px solid var(--border2); padding-right: 0; padding-bottom: 12px; }
       .phase-time::after { display: none; }
       footer { flex-direction: column; text-align: center; }
       .ask-form-wrap { padding: 28px 20px; }
     }
 
     /* scroll reveal */
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity: 1; transform: none; }
   </style>
 </head>
@@ -436,8 +443,10 @@
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#hero">
-    <span class="nav-logo-badge">UNIANDES</span>
-    <span class="nav-logo-text">HackInd 2026</span>
+    <div class="nav-logo-text">
+      HACKATHON IIND
+      <span>From Data to Decision · Uniandes</span>
+    </div>
   </a>
   <ul class="nav-links">
     <li><a href="#about">¿Qué es?</a></li>
@@ -452,21 +461,22 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-grid-bg"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-badge">
       <span class="hero-badge-dot"></span>
-      1er Hackathon · Ingeniería Industrial · Uniandes
+      I Hackathon · Depto. Ingeniería Industrial · Uniandes
     </div>
-    <h1 class="hero-title">Hack<span>Ind</span><br/>2026</h1>
-    <p class="hero-subtitle">Analiza. Decide. Transforma.</p>
+    <p class="hero-eyebrow">Universidad de los Andes</p>
+    <h1 class="hero-title">HACK<span>ATHON</span></h1>
+    <p class="hero-subtitle">From Data to Decision</p>
     <p class="hero-desc">
-      Un día para resolver un reto real de industria con datos, ingeniería y creatividad.
-      Equipos de 3 personas. Un caso. Múltiples soluciones.
+      Un día para enfrentar un reto real de industria. Analiza datos, formula recomendaciones y preséntale al jurado tu solución.
     </p>
     <div class="hero-actions">
-      <a class="btn-primary" href="#register">
-        🚀 Inscríbete ahora
+      <a class="btn-primary" href="https://forms.office.com/Pages/ResponsePage.aspx?id=fAS9-kj_KkmLu4-YufucyiYQSj6G-jpLiSTF0FsobwdUMUVBTU9UTlJMUkJLTFk0MjVTU1I1T0pMSi4u" target="_blank">
+        ✍️ Inscribe tu equipo
       </a>
       <a class="btn-secondary" href="#about">Conoce más</a>
     </div>
@@ -501,7 +511,7 @@
       </div>
       <div class="stat">
         <div class="stat-value">2°<span>–</span>4°</div>
-        <div class="stat-label">semestres</div>
+        <div class="stat-label">semestres IIND</div>
       </div>
       <div class="stat">
         <div class="stat-value">3<span> premios</span></div>
@@ -514,43 +524,38 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="container">
-    <div class="reveal">
-      <p class="section-tag">¿Qué es HackInd?</p>
-      <h2 class="section-title">Ingeniería en acción.<br/>Un día para cambiar tu perspectiva.</h2>
-      <p class="section-desc">
-        HackInd es el primer hackathon del Departamento de Ingeniería Industrial de la Universidad de los Andes. Diseñado para estudiantes de 2° a 4° semestre que quieren aplicar sus conocimientos a un reto real de industria.
-      </p>
-    </div>
-    <div class="cards-grid reveal">
-      <div class="card">
-        <div class="card-icon">📊</div>
-        <h3>Caso real de industria</h3>
-        <p>Enfrentarás un problema inspirado en situaciones reales empresariales, donde deberás analizar datos y formular recomendaciones concretas.</p>
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="section-tag">¿Qué es?</p>
+        <h2 class="section-title">Ingeniería aplicada.<br/>Un reto real.</h2>
+        <p class="section-desc">
+          El I Hackathon del Departamento de Ingeniería Industrial de Uniandes es una competencia de un día donde equipos de estudiantes analizan un caso empresarial real, desarrollan herramientas de analítica y presentan sus recomendaciones ante un jurado.
+        </p>
+        <div class="cards-grid" style="margin-top:32px;">
+          <div class="card">
+            <div class="card-icon">📊</div>
+            <h3>Caso real</h3>
+            <p>Un problema inspirado en situaciones reales del mundo empresarial.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🧠</div>
+            <h3>Analítica de datos</h3>
+            <p>Construyen herramientas para analizar, identificar patrones y sustentar.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🎤</div>
+            <h3>Pitch al jurado</h3>
+            <p>Presentan recomendaciones y responden preguntas del panel de expertos.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🏆</div>
+            <h3>Premios y certificados</h3>
+            <p>Los 3 primeros lugares ganan y todos reciben certificado de participación.</p>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-icon">🧠</div>
-        <h3>Analítica de datos</h3>
-        <p>Desarrollarás herramientas analíticas para entender la situación, identificar patrones y sustentar con datos tus propuestas de solución.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🎤</div>
-        <h3>Pitch al jurado</h3>
-        <p>Presentarás tus hallazgos y recomendaciones ante un jurado de expertos. Comunica, persuade y defiende tu propuesta.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🤝</div>
-        <h3>Trabajo en equipo</h3>
-        <p>Equipos de exactamente 3 estudiantes de Ingeniería Industrial. Complementen habilidades y dividan el trabajo estratégicamente.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🏆</div>
-        <h3>Reconocimientos</h3>
-        <p>Los tres primeros lugares obtienen premios, certificados y menciones oficiales que podrás añadir a tu hoja de vida.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🔗</div>
-        <h3>Red y conexiones</h3>
-        <p>Conoce compañeros de carrera, profesores y potencialmente representantes de empresa. Una experiencia que va más allá del aula.</p>
+      <div class="about-img reveal">
+        <img src="Imagenes/Hackaton%205%20-%20Historia%20en%20IG.png" alt="Hackathon From Data to Decision" />
       </div>
     </div>
   </div>
@@ -561,8 +566,8 @@
   <div class="container">
     <div class="reveal">
       <p class="section-tag">Agenda del día</p>
-      <h2 class="section-title">11 de abril de 2026</h2>
-      <p class="section-desc">Una jornada intensa y dinámica en el Edificio Mario Laserna.</p>
+      <h2 class="section-title">Sábado 11 de abril de 2026</h2>
+      <p class="section-desc">8:00 a.m. – 5:00 p.m. · Edificio Mario Laserna, Salón ML-507</p>
     </div>
     <div class="timeline reveal">
       <div class="phase">
@@ -573,7 +578,7 @@
         <div class="phase-body">
           <span class="phase-tag tag-blue">Apertura</span>
           <h3>Bienvenida e inauguración</h3>
-          <p>Palabras de apertura por parte del Departamento de Ingeniería Industrial. Presentación del equipo organizador, el jurado y las reglas del hackathon.</p>
+          <p>Palabras de apertura del Departamento de Ingeniería Industrial, presentación del jurado, reglas y dinámica del evento.</p>
         </div>
       </div>
       <div class="phase">
@@ -582,9 +587,9 @@
           <span class="phase-time-value">9:00 AM</span>
         </div>
         <div class="phase-body">
-          <span class="phase-tag tag-red">Lanzamiento del caso</span>
-          <h3>Revelación del reto y entrega de datos</h3>
-          <p>Se presenta el caso empresarial real. Los equipos reciben los datasets y comienzan la exploración, análisis y desarrollo de herramientas de analítica.</p>
+          <span class="phase-tag tag-teal">Lanzamiento</span>
+          <h3>Revelación del caso y entrega de datos</h3>
+          <p>Se presenta el reto empresarial real. Los equipos reciben los datasets y comienzan a explorar, limpiar y entender la información.</p>
         </div>
       </div>
       <div class="phase">
@@ -593,20 +598,20 @@
           <span class="phase-time-value">9:30 AM</span>
         </div>
         <div class="phase-body">
-          <span class="phase-tag tag-gold">Analítica e ingeniería</span>
-          <h3>Desarrollo de soluciones y recomendaciones</h3>
-          <p>Los equipos construyen sus herramientas analíticas, identifican hallazgos clave y estructuran sus recomendaciones para la empresa. Mentoría disponible durante este bloque.</p>
+          <span class="phase-tag tag-yellow">Analítica</span>
+          <h3>Desarrollo de herramientas y recomendaciones</h3>
+          <p>Los equipos construyen sus herramientas de analítica, identifican hallazgos clave y estructuran sus recomendaciones. Mentoría disponible.</p>
         </div>
       </div>
       <div class="phase">
         <div class="phase-time">
-          <span class="phase-time-label">Break</span>
+          <span class="phase-time-label">Receso</span>
           <span class="phase-time-value">12:30 PM</span>
         </div>
         <div class="phase-body">
-          <span class="phase-tag tag-blue">Receso</span>
+          <span class="phase-tag tag-blue">Break</span>
           <h3>Almuerzo y networking</h3>
-          <p>Pausa para recargar energía. Espacio para conectar con otros equipos y organizadores.</p>
+          <p>Pausa para recargar energía y conectar con otros equipos y organizadores.</p>
         </div>
       </div>
       <div class="phase">
@@ -615,9 +620,9 @@
           <span class="phase-time-value">1:30 PM</span>
         </div>
         <div class="phase-body">
-          <span class="phase-tag tag-gold">Preparación</span>
+          <span class="phase-tag tag-yellow">Preparación</span>
           <h3>Ajustes finales y preparación del pitch</h3>
-          <p>Últimos retoques a las herramientas de analítica y ensayo de la presentación. Los equipos organizan sus diapositivas y argumentos.</p>
+          <p>Últimos ajustes a las herramientas analíticas, organización de diapositivas y ensayo de la presentación.</p>
         </div>
       </div>
       <div class="phase">
@@ -626,20 +631,20 @@
           <span class="phase-time-value">3:00 PM</span>
         </div>
         <div class="phase-body">
-          <span class="phase-tag tag-red">Pitch al jurado</span>
+          <span class="phase-tag tag-teal">Pitch</span>
           <h3>Presentaciones ante el jurado</h3>
-          <p>Cada equipo presenta sus recomendaciones al jurado. Tiempo asignado por equipo para exposición y preguntas. Evalúan rigor analítico, creatividad e impacto de las propuestas.</p>
+          <p>Cada equipo presenta sus recomendaciones. Tiempo asignado para exposición y preguntas del jurado. Se evalúa rigor analítico, creatividad e impacto.</p>
         </div>
       </div>
       <div class="phase">
         <div class="phase-time">
           <span class="phase-time-label">Cierre</span>
-          <span class="phase-time-value">5:30 PM</span>
+          <span class="phase-time-value">5:00 PM</span>
         </div>
         <div class="phase-body">
           <span class="phase-tag tag-green">Premiación</span>
           <h3>Deliberación y ceremonia de premiación</h3>
-          <p>El jurado anuncia los tres primeros lugares. Entrega de premios, reconocimientos, certificados de participación y menciones. Clausura del evento.</p>
+          <p>El jurado anuncia los tres primeros lugares. Entrega de premios, certificados y menciones. Cierre oficial del evento.</p>
         </div>
       </div>
     </div>
@@ -652,33 +657,31 @@
     <div class="reveal">
       <p class="section-tag">Premios y reconocimientos</p>
       <h2 class="section-title">Compite. Innova.<br/>Gana.</h2>
-      <p class="section-desc">
-        Los tres primeros lugares reciben premios, certificados oficiales y la mención correspondiente. Un reconocimiento que respalda tu hoja de vida.
-      </p>
+      <p class="section-desc">Los tres primeros lugares reciben premios, certificados oficiales y mención departamental. Reconocimientos que potencian tu hoja de vida.</p>
     </div>
     <div class="prizes-grid reveal">
       <div class="prize-card gold-card">
         <div class="prize-medal">🥇</div>
         <div class="prize-place">1er Lugar</div>
-        <div class="prize-title">Mención Oro</div>
-        <p class="prize-desc">Premio principal + Certificado oficial con Mención de Honor · Reconocimiento del Departamento de Ingeniería Industrial.</p>
+        <div class="prize-title">Mención de Honor</div>
+        <p class="prize-desc">Premio principal + Certificado oficial con Mención de Honor del Departamento de Ingeniería Industrial de Uniandes.</p>
       </div>
       <div class="prize-card silver-card">
         <div class="prize-medal">🥈</div>
         <div class="prize-place">2do Lugar</div>
-        <div class="prize-title">Mención Plata</div>
-        <p class="prize-desc">Premio + Certificado oficial con Mención de Mérito · Reconocimiento departamental por excelencia analítica.</p>
+        <div class="prize-title">Mención de Mérito</div>
+        <p class="prize-desc">Premio + Certificado oficial con Mención de Mérito por excelencia analítica y calidad de propuesta.</p>
       </div>
       <div class="prize-card bronze-card">
         <div class="prize-medal">🥉</div>
         <div class="prize-place">3er Lugar</div>
-        <div class="prize-title">Mención Bronce</div>
-        <p class="prize-desc">Premio + Certificado oficial con Mención de Distinción · Reconocimiento por propuesta destacada e innovadora.</p>
+        <div class="prize-title">Mención de Distinción</div>
+        <p class="prize-desc">Premio + Certificado oficial con Mención de Distinción por propuesta innovadora y destacada.</p>
       </div>
     </div>
-    <div class="reveal" style="margin-top:40px; background: var(--surface); border:1px solid var(--border); border-radius: var(--radius); padding: 28px 32px; max-width: 700px; margin-left: auto; margin-right: auto; text-align: center;">
-      <p style="color: var(--muted); font-size: 15px; line-height: 1.75;">
-        <strong style="color: var(--text);">Todos los participantes</strong> reciben un <strong style="color: var(--gold);">certificado de participación</strong> que certifica su asistencia y desempeño en el I Hackathon del Departamento de Ingeniería Industrial de la Universidad de los Andes.
+    <div class="reveal" style="margin-top:36px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:28px 32px; max-width:680px; margin-left:auto; margin-right:auto; text-align:center;">
+      <p style="color:var(--muted); font-size:15px; line-height:1.8;">
+        <strong style="color:var(--text);">Todos los participantes</strong> reciben un <strong style="color:var(--teal);">certificado de participación</strong> oficial del Departamento de Ingeniería Industrial de la Universidad de los Andes.
       </p>
     </div>
   </div>
@@ -689,8 +692,8 @@
   <div class="container">
     <div class="reveal">
       <p class="section-tag">Lugar</p>
-      <h2 class="section-title">Edificio Mario Laserna</h2>
-      <p class="section-desc">El epicentro de la innovación en Uniandes. Un espacio diseñado para el pensamiento creativo y la colaboración.</p>
+      <h2 class="section-title">Edificio Mario Laserna<br/>Salón ML-507</h2>
+      <p class="section-desc">En el corazón del campus de la Universidad de los Andes, Bogotá.</p>
     </div>
     <div class="location-grid reveal">
       <div class="location-info">
@@ -698,7 +701,7 @@
           <div class="location-icon">📍</div>
           <div>
             <h4>Dirección</h4>
-            <p>Edificio Mario Laserna<br/>Universidad de los Andes, Bogotá</p>
+            <p>Edificio Mario Laserna, Salón ML-507<br/>Universidad de los Andes, Bogotá</p>
           </div>
         </div>
         <div class="location-item">
@@ -712,34 +715,24 @@
           <div class="location-icon">🕗</div>
           <div>
             <h4>Horario</h4>
-            <p>8:00 AM – 6:00 PM</p>
+            <p>8:00 a.m. – 5:00 p.m.</p>
           </div>
         </div>
         <div class="location-item">
           <div class="location-icon">👥</div>
           <div>
             <h4>Equipos</h4>
-            <p>3 integrantes por equipo<br/>Estudiantes de Ingeniería Industrial</p>
+            <p>3 integrantes por equipo<br/>Ingeniería Industrial · 2° a 4° semestre</p>
           </div>
         </div>
-        <div class="location-item">
-          <div class="location-icon">🎓</div>
-          <div>
-            <h4>Semestres</h4>
-            <p>Estudiantes de 2° a 4° semestre</p>
-          </div>
-        </div>
+        <a href="https://maps.app.goo.gl/TuFXGrCkMATXoHLH7" target="_blank"
+           style="display:inline-flex; align-items:center; gap:8px; background:var(--teal); color:#070b18; padding:14px 24px; border-radius:10px; text-decoration:none; font-size:14px; font-weight:800; margin-top:8px; width:fit-content; transition:background .2s;"
+           onmouseover="this.style.background='#009e8f'" onmouseout="this.style.background='var(--teal)'">
+          📍 Ver en Google Maps →
+        </a>
       </div>
-      <div class="location-map">
-        <div class="map-placeholder">
-          <span class="map-pin">📍</span>
-          <span class="map-label" style="font-size:18px; font-weight:700; color: var(--text);">Edificio Mario Laserna</span>
-          <span style="font-size:14px; color: var(--muted);">Universidad de los Andes · Bogotá, Colombia</span>
-          <a href="https://maps.app.goo.gl/TuFXGrCkMATXoHLH7" target="_blank"
-             style="margin-top:16px; background:var(--uniandes); color:#fff; padding:10px 20px; border-radius:8px; text-decoration:none; font-size:13px; font-weight:600;">
-            Ver en Google Maps →
-          </a>
-        </div>
+      <div class="location-img">
+        <img src="Imagenes/Hackaton%203%20-%20TV.png" alt="Hackathon From Data to Decision" />
       </div>
     </div>
   </div>
@@ -751,80 +744,40 @@
     <div class="reveal">
       <p class="section-tag">Preguntas frecuentes</p>
       <h2 class="section-title">Todo lo que necesitas saber</h2>
-      <p class="section-desc">Respuestas a las dudas más comunes. ¿No encuentras lo que buscas? Escríbenos más abajo.</p>
+      <p class="section-desc">¿No encuentras tu respuesta? Escríbenos más abajo.</p>
     </div>
     <div class="faq-list reveal">
       <div class="faq-item">
-        <button class="faq-q">
-          ¿Quién puede participar?
-          <span class="faq-chevron">▾</span>
-        </button>
-        <div class="faq-a">
-          Pueden participar estudiantes de la carrera de Ingeniería Industrial de la Universidad de los Andes que estén cursando entre 2° y 4° semestre al momento del evento.
-        </div>
+        <button class="faq-q">¿Quién puede participar?<span class="faq-chevron">▾</span></button>
+        <div class="faq-a">Estudiantes de Ingeniería Industrial de Uniandes que estén cursando entre 2° y 4° semestre de pregrado al momento del evento.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">
-          ¿Cuántas personas debe tener un equipo?
-          <span class="faq-chevron">▾</span>
-        </button>
-        <div class="faq-a">
-          Los equipos deben estar conformados por exactamente 3 personas. No se permiten equipos de 1, 2, 4 o más integrantes. Todos los miembros deben ser estudiantes de Ingeniería Industrial de Uniandes en los semestres indicados.
-        </div>
+        <button class="faq-q">¿Cuántas personas debe tener un equipo?<span class="faq-chevron">▾</span></button>
+        <div class="faq-a">Los equipos deben estar conformados por exactamente 3 personas. No se permiten equipos de 1, 2 o más de 3 integrantes. Todos deben ser estudiantes de IIND Uniandes en los semestres indicados.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">
-          ¿De qué trata el caso que vamos a resolver?
-          <span class="faq-chevron">▾</span>
-        </button>
-        <div class="faq-a">
-          El caso estará inspirado en una situación real del mundo empresarial. Los equipos deberán analizar datos, identificar problemas u oportunidades y formular recomendaciones concretas para asesorar a la empresa. El caso se revelará el mismo día del hackathon.
-        </div>
+        <button class="faq-q">¿De qué trata el caso que vamos a resolver?<span class="faq-chevron">▾</span></button>
+        <div class="faq-a">El caso está inspirado en una situación real empresarial. Los equipos analizan datos, identifican problemas u oportunidades y formulan recomendaciones concretas para asesorar a la empresa. El caso se revela el mismo día del hackathon.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">
-          ¿Qué herramientas podemos usar?
-          <span class="faq-chevron">▾</span>
-        </button>
-        <div class="faq-a">
-          Pueden usar cualquier herramienta de analítica de datos, hojas de cálculo, software estadístico, lenguajes de programación (Python, R, etc.) o cualquier otra herramienta que consideren pertinente. Más detalles se comunicarán en la convocatoria oficial.
-        </div>
+        <button class="faq-q">¿Qué herramientas podemos usar?<span class="faq-chevron">▾</span></button>
+        <div class="faq-a">Pueden usar cualquier herramienta de analítica: Excel, Python, R, Tableau, Power BI u otras. Más detalles se comunicarán en la convocatoria oficial.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">
-          ¿Es necesario tener experiencia previa en programación?
-          <span class="faq-chevron">▾</span>
-        </button>
-        <div class="faq-a">
-          No es obligatorio. El hackathon está diseñado para estudiantes de 2° a 4° semestre, por lo que el nivel de la analítica requerida es acorde a sus conocimientos actuales. Lo importante es la capacidad de análisis, interpretación y comunicación de hallazgos.
-        </div>
+        <button class="faq-q">¿Es necesario saber programar?<span class="faq-chevron">▾</span></button>
+        <div class="faq-a">No es obligatorio. El nivel de analítica requerida es acorde a los conocimientos de 2° a 4° semestre. Lo importante es la capacidad de análisis, interpretación y comunicación de hallazgos.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">
-          ¿Cuándo se abre la inscripción y cuándo cierra?
-          <span class="faq-chevron">▾</span>
-        </button>
-        <div class="faq-a">
-          La inscripción ya está abierta. Las fechas de cierre se comunicarán por los canales oficiales del Departamento. ¡No esperes al último momento!
-        </div>
+        <button class="faq-q">¿Tiene algún costo participar?<span class="faq-chevron">▾</span></button>
+        <div class="faq-a">La participación en el I Hackathon IIND 2026 es completamente gratuita para todos los estudiantes de Ingeniería Industrial de Uniandes.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">
-          ¿Tiene algún costo la participación?
-          <span class="faq-chevron">▾</span>
-        </button>
-        <div class="faq-a">
-          La participación en HackInd 2026 es completamente gratuita para todos los estudiantes de Ingeniería Industrial de Uniandes.
-        </div>
+        <button class="faq-q">¿Cómo se evaluarán las propuestas?<span class="faq-chevron">▾</span></button>
+        <div class="faq-a">El jurado evaluará: rigor y profundidad del análisis de datos, creatividad e impacto de las recomendaciones, calidad del pitch y capacidad para responder preguntas del jurado.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">
-          ¿Cómo se evaluarán las propuestas?
-          <span class="faq-chevron">▾</span>
-        </button>
-        <div class="faq-a">
-          El jurado evaluará el rigor y profundidad del análisis de datos, la creatividad e impacto de las recomendaciones, la calidad de la presentación (pitch) y la capacidad para responder preguntas del jurado.
-        </div>
+        <button class="faq-q">¿Cuándo cierran las inscripciones?<span class="faq-chevron">▾</span></button>
+        <div class="faq-a">Las fechas de cierre se comunicarán por los canales oficiales del Departamento. ¡No esperes al último momento e inscribe tu equipo ya!</div>
       </div>
     </div>
   </div>
@@ -832,26 +785,24 @@
 
 <!-- ASK ORGANIZERS -->
 <section id="ask">
-  <div class="container" style="text-align: center;">
+  <div class="container" style="text-align:center;">
     <div class="reveal">
       <p class="section-tag">¿Tienes más preguntas?</p>
       <h2 class="section-title">Escríbele a los organizadores</h2>
-      <p class="section-desc" style="margin: 0 auto;">
-        ¿Algo no quedó claro? ¿Tienes una pregunta específica? Completa el formulario y te responderemos lo antes posible.
-      </p>
+      <p class="section-desc" style="margin:0 auto;">¿Algo no quedó claro? Completa el formulario y te responderemos pronto.</p>
     </div>
     <div class="ask-form-wrap reveal">
       <form id="ask-form">
         <div class="form-group">
-          <label>NOMBRE COMPLETO</label>
+          <label>Nombre completo</label>
           <input type="text" placeholder="Tu nombre" required />
         </div>
         <div class="form-group">
-          <label>CORREO ELECTRÓNICO</label>
+          <label>Correo electrónico</label>
           <input type="email" placeholder="tu@uniandes.edu.co" required />
         </div>
         <div class="form-group">
-          <label>CATEGORÍA</label>
+          <label>Categoría</label>
           <select>
             <option value="">Selecciona una categoría</option>
             <option>Inscripción y equipos</option>
@@ -863,14 +814,14 @@
           </select>
         </div>
         <div class="form-group">
-          <label>TU PREGUNTA</label>
+          <label>Tu pregunta</label>
           <textarea placeholder="Escribe tu pregunta aquí..."></textarea>
         </div>
         <button type="submit" class="btn-form">Enviar pregunta →</button>
       </form>
       <div class="form-success" id="form-success">
         <div class="success-icon">✅</div>
-        <p>¡Pregunta enviada exitosamente!<br/>Los organizadores te responderán pronto.</p>
+        <p>¡Pregunta enviada!<br/>Los organizadores te responderán pronto.</p>
       </div>
     </div>
   </div>
@@ -878,59 +829,52 @@
 
 <!-- REGISTER CTA -->
 <section id="register">
-  <div class="container">
+  <div class="register-bg"></div>
+  <div class="register-overlay"></div>
+  <div class="register-content">
     <p class="section-tag" style="text-align:center;">Inscripciones abiertas</p>
     <h2 class="register-title">¿Listo para el reto?</h2>
-    <p class="register-desc">
-      Arma tu equipo de 3, inscríbanse antes de que cierren los cupos y demuestra de lo que eres capaz.
-    </p>
+    <p class="register-desc">Arma tu equipo de 3, inscríbanse antes de que cierren los cupos y demuestra de lo que eres capaz.</p>
     <a class="btn-register" href="https://forms.office.com/Pages/ResponsePage.aspx?id=fAS9-kj_KkmLu4-YufucyiYQSj6G-jpLiSTF0FsobwdUMUVBTU9UTlJMUkJLTFk0MjVTU1I1T0pMSi4u" target="_blank">
-      ✍️ Inscríbete aquí
+      ✍️ Inscribe tu equipo aquí
     </a>
-    <p class="register-note">Inscripción gratuita · Cupos limitados · Solo para estudiantes de Ingeniería Industrial Uniandes</p>
+    <p class="register-note">Inscripción gratuita · Cupos limitados · Solo para estudiantes IIND Uniandes 2°–4° semestre</p>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">
-    <span class="nav-logo-badge">UNIANDES</span>
-    <span style="color: var(--muted); font-size: 14px;">Departamento de Ingeniería Industrial · HackInd 2026</span>
+  <div>
+    <p style="font-weight:700; font-size:15px;">HACKATHON <span style="color:var(--teal);">FROM DATA TO DECISION</span></p>
+    <p style="color:var(--muted); font-size:13px; margin-top:4px;">Departamento de Ingeniería Industrial · Universidad de los Andes</p>
   </div>
-  <p class="footer-copy">© 2026 Departamento de Ingeniería Industrial · Universidad de los Andes</p>
+  <p class="footer-copy">© 2026 Departamento de Ingeniería Industrial · Uniandes</p>
   <div class="footer-links">
     <a href="#about">Acerca</a>
     <a href="#phases">Agenda</a>
+    <a href="#prizes">Premios</a>
     <a href="#ask">Contacto</a>
   </div>
 </footer>
 
 <script>
-  // ── Countdown ──
+  // Countdown
   const eventDate = new Date('2026-04-11T08:00:00-05:00');
   function updateCountdown() {
-    const now = new Date();
-    const diff = eventDate - now;
-    if (diff <= 0) {
-      document.getElementById('cd-days').textContent = '00';
-      document.getElementById('cd-hours').textContent = '00';
-      document.getElementById('cd-mins').textContent = '00';
-      document.getElementById('cd-secs').textContent = '00';
-      return;
-    }
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const mins = Math.floor((diff % 3600000) / 60000);
-    const secs = Math.floor((diff % 60000) / 1000);
-    document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
-    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
-    document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
-    document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
+    const diff = eventDate - new Date();
+    if (diff <= 0) { ['days','hours','mins','secs'].forEach(k => document.getElementById('cd-'+k).textContent='00'); return; }
+    const d = Math.floor(diff/86400000);
+    const h = Math.floor((diff%86400000)/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    const s = Math.floor((diff%60000)/1000);
+    document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
   }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+  updateCountdown(); setInterval(updateCountdown, 1000);
 
-  // ── FAQ accordion ──
+  // FAQ
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
@@ -940,23 +884,18 @@
     });
   });
 
-  // ── Form submit ──
+  // Form
   document.getElementById('ask-form').addEventListener('submit', function(e) {
     e.preventDefault();
     this.style.display = 'none';
     document.getElementById('form-success').style.display = 'block';
   });
 
-  // ── Scroll reveal ──
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
