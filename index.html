@@ -77,7 +77,7 @@
     .hero-bg {
       position: absolute; inset: 0;
       background-image: url('Imagenes/Hackaton%204%20-%20Banner.png');
-      background-size: 100% auto; background-position: center top;
+      background-size: cover; background-position: center;
       filter: brightness(0.35);
     }
     .hero-overlay {
@@ -202,13 +202,7 @@
       border: 1px solid var(--border);
       box-shadow: 0 0 60px rgba(0,201,184,0.12);
     }
-    .about-img img {
-      width: 100%; display: block;
-      object-fit: cover; object-position: top;
-      max-height: 600px;
-      clip-path: inset(0 0 18% 0);
-      margin-bottom: -18%;
-    }
+    .about-img img { width: 100%; display: block; }
     .cards-grid {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 16px; margin-top: 32px;
@@ -312,12 +306,7 @@
       border: 1px solid var(--border);
       box-shadow: 0 0 60px rgba(0,201,184,0.1);
     }
-    .location-img img {
-      width: 100%; display: block;
-      object-fit: cover; object-position: top;
-      clip-path: inset(0 0 22% 0);
-      margin-bottom: -22%;
-    }
+    .location-img img { width: 100%; display: block; }
 
     /* ── FAQ ── */
     .faq-list { margin-top: 56px; display: flex; flex-direction: column; gap: 10px; }
@@ -383,7 +372,7 @@
     .register-bg {
       position: absolute; inset: 0;
       background-image: url('Imagenes/Hackaton%201%20-%20Post%20cuadrado.png');
-      background-size: 100% auto; background-position: center top;
+      background-size: cover; background-position: center;
       filter: brightness(0.2);
     }
     .register-overlay {
@@ -743,7 +732,7 @@
         </a>
       </div>
       <div class="location-img">
-        <img src="Imagenes/Hackaton%203%20-%20TV.png" alt="Hackathon From Data to Decision" />
+        <img src="Imagenes/Hackaton%204%20-%20Banner.png" alt="Hackathon From Data to Decision" />
       </div>
     </div>
   </div>
