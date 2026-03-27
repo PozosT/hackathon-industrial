@@ -476,6 +476,7 @@
     @media (max-width: 900px) {
       .about-grid, .location-grid { grid-template-columns: 1fr; }
       .cards-grid { grid-template-columns: 1fr; }
+      .prize-participation-grid { grid-template-columns: 1fr !important; }
     }
     @media (max-width: 768px) {
       nav { padding: 14px 20px; }
@@ -747,10 +748,17 @@
         <p class="prize-desc">Bono de Amazon de <strong style="color:var(--teal);">$150 USD por equipo</strong> + Certificado oficial con Mención de Distinción por propuesta innovadora y destacada.</p>
       </div>
     </div>
-    <div class="reveal" style="margin-top:36px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:28px 32px; max-width:680px; margin-left:auto; margin-right:auto; text-align:center;">
-      <p style="color:var(--muted); font-size:15px; line-height:1.8;">
-        <strong style="color:var(--text);">Todos los participantes</strong> reciben un <strong style="color:var(--teal);">certificado de participación</strong> oficial del Departamento de Ingeniería Industrial de la Universidad de los Andes.
-      </p>
+    <div class="reveal" style="margin-top:36px; max-width:780px; margin-left:auto; margin-right:auto;">
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; display:grid; grid-template-columns:1fr 1fr; align-items:center;">
+        <img src="Imagenes/Recordatorios_participantes.jpeg" alt="Recordatorio para participantes" style="width:100%; height:260px; object-fit:contain; object-position:center; background:var(--surface2); display:block; padding:12px;" />
+        <div style="padding:32px;">
+          <p style="font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--teal); margin-bottom:10px;">Para todos</p>
+          <p style="font-size:18px; font-weight:700; color:var(--text); margin-bottom:12px;">Un recuerdo especial</p>
+          <p style="color:var(--muted); font-size:14px; line-height:1.8;">
+            <strong style="color:var(--text);">Todos los participantes</strong> reciben un <strong style="color:var(--teal);">certificado oficial</strong> del Departamento de Ingeniería Industrial y un recordatorio especial por atreverse a vivir una experiencia de formación diferente.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
