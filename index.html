@@ -285,6 +285,33 @@
     .prize-title { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
     .prize-desc  { color: var(--muted); font-size: 14px; line-height: 1.7; }
 
+    /* ── JUDGES ── */
+    #judges { background: var(--dark2); }
+    .judges-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+      gap: 40px; margin-top: 56px;
+    }
+    .judge-card {
+      background: var(--surface); border: 1px solid var(--border2);
+      border-radius: var(--radius); overflow: hidden;
+      transition: border-color .2s, transform .2s;
+    }
+    .judge-card:hover { border-color: var(--teal); transform: translateY(-4px); }
+    .judge-photo {
+      width: 100%; height: 280px; object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .judge-info { padding: 28px; }
+    .judge-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px; font-weight: 700; margin-bottom: 6px;
+    }
+    .judge-role {
+      font-size: 13px; font-weight: 600; color: var(--teal);
+      letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .judge-bio { color: var(--muted); font-size: 14px; line-height: 1.75; }
+
     /* ── LOCATION ── */
     #location { background: var(--dark2); }
     .location-grid {
@@ -452,6 +479,7 @@
     <li><a href="#about">¿Qué es?</a></li>
     <li><a href="#phases">Agenda</a></li>
     <li><a href="#prizes">Premios</a></li>
+    <li><a href="#judges">Jurados</a></li>
     <li><a href="#location">Lugar</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#ask">Preguntas</a></li>
@@ -657,32 +685,69 @@
     <div class="reveal">
       <p class="section-tag">Premios y reconocimientos</p>
       <h2 class="section-title">Compite. Innova.<br/>Gana.</h2>
-      <p class="section-desc">Los tres primeros lugares reciben premios, certificados oficiales y mención departamental. Reconocimientos que potencian tu hoja de vida.</p>
+      <p class="section-desc">Los tres primeros lugares reciben bonos de Amazon, certificados oficiales y mención departamental. Reconocimientos que potencian tu hoja de vida.</p>
     </div>
     <div class="prizes-grid reveal">
       <div class="prize-card gold-card">
         <div class="prize-medal">🥇</div>
         <div class="prize-place">1er Lugar</div>
-        <div class="prize-title">Mención de Honor</div>
-        <p class="prize-desc">Premio principal + Certificado oficial con Mención de Honor del Departamento de Ingeniería Industrial de Uniandes.</p>
+        <div class="prize-title">$150 USD por persona</div>
+        <p class="prize-desc">Bono de Amazon de <strong style="color:var(--yellow);">$450 USD por equipo</strong> + Certificado oficial con Mención de Honor del Departamento de Ingeniería Industrial de Uniandes.</p>
       </div>
       <div class="prize-card silver-card">
         <div class="prize-medal">🥈</div>
         <div class="prize-place">2do Lugar</div>
-        <div class="prize-title">Mención de Mérito</div>
-        <p class="prize-desc">Premio + Certificado oficial con Mención de Mérito por excelencia analítica y calidad de propuesta.</p>
+        <div class="prize-title">$75 USD por persona</div>
+        <p class="prize-desc">Bono de Amazon de <strong style="color:#dceeff;">$225 USD por equipo</strong> + Certificado oficial con Mención de Mérito por excelencia analítica y calidad de propuesta.</p>
       </div>
       <div class="prize-card bronze-card">
         <div class="prize-medal">🥉</div>
         <div class="prize-place">3er Lugar</div>
-        <div class="prize-title">Mención de Distinción</div>
-        <p class="prize-desc">Premio + Certificado oficial con Mención de Distinción por propuesta innovadora y destacada.</p>
+        <div class="prize-title">$50 USD por persona</div>
+        <p class="prize-desc">Bono de Amazon de <strong style="color:var(--teal);">$150 USD por equipo</strong> + Certificado oficial con Mención de Distinción por propuesta innovadora y destacada.</p>
       </div>
     </div>
     <div class="reveal" style="margin-top:36px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:28px 32px; max-width:680px; margin-left:auto; margin-right:auto; text-align:center;">
       <p style="color:var(--muted); font-size:15px; line-height:1.8;">
         <strong style="color:var(--text);">Todos los participantes</strong> reciben un <strong style="color:var(--teal);">certificado de participación</strong> oficial del Departamento de Ingeniería Industrial de la Universidad de los Andes.
       </p>
+    </div>
+  </div>
+</section>
+
+<!-- JUDGES -->
+<section id="judges">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-tag">Panel de expertos</p>
+      <h2 class="section-title">Conoce a los jurados</h2>
+      <p class="section-desc">Profesionales con experiencia real en analítica de datos e industria evaluarán tu propuesta.</p>
+    </div>
+    <div class="judges-grid reveal">
+      <div class="judge-card">
+        <img class="judge-photo" src="Imagenes/Isabella_Rodas.jpeg" alt="Isabella Rodas" />
+        <div class="judge-info">
+          <div class="judge-name">Isabella Rodas</div>
+          <div class="judge-role">Data Scientist · Nubank</div>
+          <p class="judge-bio">
+            Isabella es Data Scientist en Nubank, donde convierte datos en decisiones con impacto real. Su trayectoria mezcla consultoría (BCG), investigación (Quantil) y academia, habiendo sido profesora de Modelos Probabilísticos en la Universidad de los Andes.
+            <br/><br/>
+            Le gusta moverse entre lo técnico y lo aplicado, llevando modelos a soluciones que realmente se usan. Fuera del mundo de datos, le gusta tejer, leer y dar clases de yoga.
+          </p>
+        </div>
+      </div>
+      <div class="judge-card">
+        <img class="judge-photo" src="Imagenes/Juan_Diego_Prada.jpeg" alt="Juan Diego Prada" />
+        <div class="judge-info">
+          <div class="judge-name">Juan Diego Prada</div>
+          <div class="judge-role">Analítica de Operaciones · Rappi</div>
+          <p class="judge-bio">
+            Ingeniero Industrial y Magíster en Ingeniería Industrial de la Universidad de los Andes. Fue asistente de investigación trabajando en modelos predictivos para el Grupo de Energía de Bogotá, identificando anomalías en consumo de gas.
+            <br/><br/>
+            Actualmente trabaja en Rappi en el área de operaciones, gestionando el pago de repartidores en momentos de lluvia. Ama cocinar, tejer y a Millonarios.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
