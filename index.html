@@ -150,6 +150,33 @@
     }
     .btn-secondary:hover { border-color: var(--teal); color: var(--teal); }
 
+    /* ── HERO JUDGES TEASER ── */
+    .hero-judges-teaser {
+      display: flex; align-items: center; justify-content: center;
+      gap: 14px; margin-top: 32px;
+    }
+    .hero-judges-avatars {
+      display: flex;
+    }
+    .hero-judges-avatars img {
+      width: 44px; height: 44px; border-radius: 50%;
+      object-fit: cover; object-position: center top;
+      border: 2px solid var(--dark);
+      margin-left: -10px;
+    }
+    .hero-judges-avatars img:first-child { margin-left: 0; }
+    .hero-judges-label {
+      font-size: 14px; color: var(--muted); line-height: 1.4;
+    }
+    .hero-judges-label strong { color: var(--text); }
+    .hero-judges-link {
+      font-size: 13px; color: var(--teal); text-decoration: none;
+      border: 1px solid rgba(0,201,184,0.3); padding: 6px 14px;
+      border-radius: 20px; font-weight: 600; white-space: nowrap;
+      transition: background .2s;
+    }
+    .hero-judges-link:hover { background: rgba(0,201,184,0.1); }
+
     .countdown-wrapper {
       display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
       margin-top: 48px;
@@ -507,6 +534,17 @@
         ✍️ Inscribe tu equipo
       </a>
       <a class="btn-secondary" href="#about">Conoce más</a>
+    </div>
+
+    <div class="hero-judges-teaser">
+      <div class="hero-judges-avatars">
+        <img src="Imagenes/Isabella_Rodas.jpeg" alt="Isabella Rodas" />
+        <img src="Imagenes/Juan_Diego_Prada.jpeg" alt="Juan Diego Prada" />
+      </div>
+      <div class="hero-judges-label">
+        <strong>Panel de jurados confirmado</strong><br/>Isabella Rodas · Juan Diego Prada
+      </div>
+      <a class="hero-judges-link" href="#judges">Conócelos →</a>
     </div>
 
     <div class="countdown-wrapper">
