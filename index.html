@@ -315,8 +315,8 @@
     /* ── JUDGES ── */
     #judges { background: var(--dark2); }
     .judges-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
-      gap: 40px; margin-top: 56px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 32px; margin-top: 56px;
     }
     .judge-card {
       background: var(--surface); border: 1px solid var(--border2);
@@ -325,8 +325,9 @@
     }
     .judge-card:hover { border-color: var(--teal); transform: translateY(-4px); }
     .judge-photo {
-      width: 100%; height: 280px; object-fit: cover; object-position: center top;
-      display: block;
+      width: 100%; height: 300px; object-fit: contain; object-position: center;
+      background: var(--surface2);
+      display: block; padding: 12px;
     }
     .judge-info { padding: 28px; }
     .judge-name {
@@ -540,9 +541,10 @@
       <div class="hero-judges-avatars">
         <img src="Imagenes/Isabella_Rodas.jpeg" alt="Isabella Rodas" />
         <img src="Imagenes/Juan_Diego_Prada.jpeg" alt="Juan Diego Prada" />
+        <img src="Imagenes/Juan_Se_Agudelo.jpeg" alt="Juan Sebastián Agudelo" />
       </div>
       <div class="hero-judges-label">
-        <strong>Panel de jurados confirmado</strong><br/>Isabella Rodas · Juan Diego Prada
+        <strong>Panel de jurados confirmado</strong><br/>Isabella Rodas · Juan Diego Prada · Juan Sebastián Agudelo
       </div>
       <a class="hero-judges-link" href="#judges">Conócelos →</a>
     </div>
@@ -783,6 +785,18 @@
             Ingeniero Industrial y Magíster en Ingeniería Industrial de la Universidad de los Andes. Fue asistente de investigación trabajando en modelos predictivos para el Grupo de Energía de Bogotá, identificando anomalías en consumo de gas.
             <br/><br/>
             Actualmente trabaja en Rappi en el área de operaciones, gestionando el pago de repartidores en momentos de lluvia. Ama cocinar, tejer y a Millonarios.
+          </p>
+        </div>
+      </div>
+      <div class="judge-card">
+        <img class="judge-photo" src="Imagenes/Juan_Se_Agudelo.jpeg" alt="Juan Sebastián Agudelo" />
+        <div class="judge-info">
+          <div class="judge-name">Juan Sebastián Agudelo</div>
+          <div class="judge-role">Data Science · Rappi</div>
+          <p class="judge-bio">
+            Ingeniero Industrial de la Universidad de los Andes y candidato a Magíster en Investigación de Operaciones y Estadística Aplicada. En Rappi ha liderado soluciones de Data Science y analítica avanzada para optimización logística, pronósticos de demanda y eficiencia económica.
+            <br/><br/>
+            Combina el rigor del modelamiento matemático con implementaciones tecnológicas escalables, bajo la premisa de que comprender el problema es la clave para elegir la tecnología adecuada.
           </p>
         </div>
       </div>
